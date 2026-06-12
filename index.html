@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="ARDIANSYAH - Mahasiswa Agribisnis & Investor Saham | Trader Fundamental | Universitas Lancang Kuning">
+  <meta name="theme-color" content="#2b7a4b">
+  <meta property="og:title" content="ARDIANSYAH · Investor & Agribisnis">
+  <meta property="og:description" content="Portfolio Mahasiswa Agribisnis, Investor Saham & Trader Fundamental dari Universitas Lancang Kuning">
+  <meta property="og:type" content="website">
+  <title>ARDIANSYAH · Investor & Agribisnis</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    /* Light mode (default) */
+    :root {
+      --bg-primary: #fefcf5;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #1e2a2e;
+      --text-secondary: #2d3e40;
+      --accent: #2b7a4b;
+      --accent-light: #e9f5ef;
+      --accent-hover: #1f5e3a;
+      --border-light: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --hero-gradient: linear-gradient(135deg, #f3f9f0 0%, #fef5e7 100%);
+      --footer-bg: #f1f5f0;
+    }
+
+    body.dark {
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e2a;
+      --bg-card: #252530;
+      --text-primary: #ececec;
+      --text-secondary: #cbd5e1;
+      --accent: #6fbf4c;
+      --accent-light: #2a3a2a;
+      --accent-hover: #8fdf6a;
+      --border-light: #2d3748;
+      --hero-gradient: linear-gradient(135deg, #1a2a1f 0%, #232323 100%);
+      --footer-bg: #0f0f14;
+    }
+
+    /* container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(var(--bg-primary-rgb), 0.75);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1rem 0;
+    }
+    body.light .navbar { --bg-primary-rgb: 254,252,245; }
+    body.dark .navbar { --bg-primary-rgb: 18,18,24; }
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, var(--accent), #8bc34a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .dark-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 8px;
+    }
+    /* Hero */
+    .hero {
+      padding: 5rem 0 4rem;
+      background: var(--hero-gradient);
+      border-radius: 0 0 3rem 3rem;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero .highlight {
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+    }
+    .hero .sub {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 1rem;
+    }
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 18px -8px rgba(43, 122, 75, 0.3);
+    }
+    .btn-outline {
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent-light);
+      transform: translateY(-3px);
+    }
+    /* sections */
+    section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    .about-grid {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-img {
+      flex: 1;
+      text-align: center;
+    }
+    .about-img i {
+      font-size: 12rem;
+      color: var(--accent);
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+    }
+    .about-text {
+      flex: 2;
+    }
+    .badge-nim {
+      background: var(--accent-light);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    /* skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .skill-card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-light);
+      transition: all 0.25s;
+    }
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+    }
+    .skill-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    /* portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .portfolio-item {
+      background: var(--bg-card);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.25s;
+      border: 1px solid var(--border-light);
+    }
+    .portfolio-item:hover {
+      transform: scale(1.02);
+    }
+    .portfolio-img {
+      background: var(--accent-light);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: var(--accent);
+    }
+    .portfolio-info {
+      padding: 1.5rem;
+    }
+    /* testimoni */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .testi-card {
+      background: var(--bg-card);
+      padding: 1.8rem;
+      border-radius: 28px;
+      border: 1px solid var(--border-light);
+    }
+    .testi-avatar {
+      width: 55px;
+      height: 55px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    /* contact form */
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .form-box {
+      flex: 1;
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 32px;
+      border: 1px solid var(--border-light);
+    }
+    .input-group {
+      margin-bottom: 1.2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 18px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 28px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+    }
+    textarea { resize: vertical; }
+    button[type="submit"] {
+      background: var(--accent);
+      width: 100%;
+      border: none;
+      padding: 12px;
+      border-radius: 40px;
+      font-weight: bold;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .social-links {
+      flex: 0.8;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .social-icon {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--bg-card);
+      padding: 0.9rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+      transition: all 0.2s;
+    }
+    .social-icon:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .footer {
+      background: var(--footer-bg);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+    @media (max-width: 768px) {
+      .nav-flex { flex-direction: column; gap: 1rem; }
+      .nav-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+      .hero h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .about-grid { flex-direction: column; text-align: center; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">ARDY<span style="color: var(--accent);//" aria-label="slash saham">//SAHAM</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#skills">Keahlian</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+    <button class="dark-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i> <span>Mode Gelap</span></button>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="reveal">
+        <span class="badge-nim"><i class="fas fa-graduation-cap"></i> NIM 2554201035</span>
+        <h1>Halo, Saya <span class="highlight">ARDIANSYAH</span><br>Mahasiswa Agribisnis & Investor Saham</h1>
+        <div class="sub"><i class="fas fa-chart-line"></i> Trader Fundamental | <i class="fas fa-book-open"></i> Running & Membaca</div>
+        <p style="max-width: 600px; margin-bottom: 1.5rem;">Menggabungkan strategi agribisnis dengan analisis pasar modal. Mahasiswa Fakultas Pertanian, Universitas Lancang Kuning.</p>
+        <div class="btn-group">
+          <a href="#portfolio" class="btn btn-primary"><i class="fas fa-chart-simple"></i> Lihat Karya</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Hubungi Saya</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="reveal"><h2 class="section-title">Tentang Saya</h2></div>
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <i class="fas fa-user-astronaut" aria-label="User icon"></i>
+        </div>
+        <div class="about-text reveal">
+          <p style="margin-bottom: 1rem;"><strong>ARDIANSYAH</strong> · Mahasiswa aktif Agribisnis, Fakultas Pertanian, Universitas Lancang Kuning. Sejak awal kuliah, saya mendalami pola pasar komoditas pertanian yang kemudian membawa saya ke dunia <strong>investasi saham & trading</strong>.</p>
+          <p style="margin-bottom: 1rem;">Saya percaya bahwa financial freedom bisa diraih dengan literasi pasar dan disiplin. Saat tidak menganalisis grafik saham, saya meluangkan waktu untuk <strong>lari pagi (running)</strong> dan <strong>membaca buku</strong>—mulai dari biografi investor hingga pengembangan diri.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 1.2rem;">
+            <span><i class="fas fa-university"></i> Universitas Lancang Kuning</span>
+            <span><i class="fas fa-tractor"></i> Agribisnis'25</span>
+            <span><i class="fas fa-running"></i> Runner 5K+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Tools -->
+  <section id="skills" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="reveal"><h2 class="section-title">Keahlian & Tools</h2></div>
+      <div class="skills-grid">
+        <div class="skill-card reveal"><i class="fas fa-chart-line"></i><h3>Analisis Fundamental</h3><p>Laporan keuangan, valuasi saham</p></div>
+        <div class="skill-card reveal"><i class="fas fa-chart-simple"></i><h3>Teknikal Trading</h3><p>Support/resistance, indikator</p></div>
+        <div class="skill-card reveal"><i class="fas fa-leaf"></i><h3>Agribisnis & Komoditas</h3><p>Rantai pasok, harga CPO, karet</p></div>
+        <div class="skill-card reveal"><i class="fas fa-brain"></i><h3>Risk Management</h3><p>Money management & psikologi trading</p></div>
+        <div class="skill-card reveal"><i class="fas fa-dumbbell"></i><h3>Disiplin Running</h3><p>Konsistensi & ketahanan mental</p></div>
+        <div class="skill-card reveal"><i class="fas fa-book"></i><h3>Literasi Pasar</h3><p>Buku: The Intelligent Investor, etc</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="reveal"><h2 class="section-title">Portofolio & Proyek</h2></div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item reveal">
+          <div class="portfolio-img"><i class="fas fa-chart-line fa-3x"></i></div>
+          <div class="portfolio-info">
+            <h3>Screening Saham Agrikultur</h3>
+            <p>Analisis 10 saham sektor agrikultur & perkebunan untuk jangka panjang.</p>
+            <button class="btn btn-outline" style="margin-top: 12px; padding: 6px 18px;" onclick="alert('Proyek: Screening saham agrikultur + rekomendasi buy area')">Lihat Detail</button>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-img"><i class="fas fa-chart-pie"></i></div>
+          <div class="portfolio-info">
+            <h3>Portofolio Simulasi Trader</h3>
+            <p>Return +12% dalam 3 bulan (paper trading) dengan strategi breakout.</p>
+            <button class="btn btn-outline" style="margin-top: 12px; padding: 6px 18px;" onclick="alert('Portofolio simulasi: 12% return, konsisten dengan risk-reward 1:2')">Lihat Detail</button>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-img"><i class="fas fa-running"></i></div>
+          <div class="portfolio-info">
+            <h3>Event Virtual Run & Literasi</h3>
+            <p>Menggabungkan hobi lari dan edukasi saham untuk komunitas kampus.</p>
+            <button class="btn btn-outline" style="margin-top: 12px; padding: 6px 18px;" onclick="alert('Virtual Run + literasi keuangan sukses diikuti 70+ mahasiswa')">Lihat Detail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimoni -->
+  <section style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="reveal"><h2 class="section-title">Apa Kata Mereka</h2></div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-avatar"><i class="fas fa-chalkboard-user"></i></div>
+          <p>"ARDIANSYAH punya perspektif unik: agribisnis dan saham saling terkait. Analisisnya berbasis data dan easy to understand."</p>
+          <h4 style="margin-top: 1rem;">— Dekan Faperta, ULK</h4>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-avatar"><i class="fas fa-handshake"></i></div>
+          <p>"Trader muda disiplin. Saya belajar risk management dari dia, hasil trading lebih konsisten. Plus gaya hidup sehat, inspiratif!"</p>
+          <h4 style="margin-top: 1rem;">— Rekan Investor Club</h4>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-avatar"><i class="fas fa-person-running"></i></div>
+          <p>"Running bareng Ardi selalu asik sambil diskusi saham. Energinya positif & low ego. Rekomended banget!"</p>
+          <h4 style="margin-top: 1rem;">— Komunitas Lari Pekanbaru</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="reveal"><h2 class="section-title">Hubungi Saya</h2></div>
+      <div class="contact-wrapper">
+        <div class="form-box reveal">
+          <form id="contactForm">
+            <div class="input-group"><input type="text" id="name" placeholder="Nama lengkap" required></div>
+            <div class="input-group"><input type="email" id="email" placeholder="Email anda" required></div>
+            <div class="input-group"><textarea rows="4" id="message" placeholder="Pesan kolaborasi / saham / dll..." required></textarea></div>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesan</button>
+          </form>
+        </div>
+        <div class="social-links reveal">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i> Instagram</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          <a href="mailto:ibibbelang@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i> ibibbelang@gmail.com</a>
+          <a href="https://strava.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Strava"><i class="fas fa-running"></i> Strava / Running</a>
+          <a href="https://goodreads.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Goodreads"><i class="fas fa-book"></i> Goodreads</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 ARDIANSYAH · Mahasiswa Agribisnis | Investor & Trader Saham | Running Enthusiast</p>
+    <p style="margin-top: 8px; font-size: 0.85rem;"><i class="fas fa-map-marker-alt"></i> Universitas Lancang Kuning, Pekanbaru</p>
+  </div>
+</footer>
+
+<script>
+  // Dark mode toggle
+  const toggleBtn = document.getElementById('darkModeToggle');
+  const body = document.body;
+  const storedTheme = localStorage.getItem('theme');
+  if (storedTheme === 'dark') {
+    body.classList.add('dark');
+    toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Mode Terang</span>';
+  } else {
+    body.classList.remove('dark');
+    toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Mode Gelap</span>';
+  }
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    const isDark = body.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i> <span>Mode Terang</span>' : '<i class="fas fa-moon"></i> <span>Mode Gelap</span>';
+  });
+
+  // Scroll reveal
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    for (let el of revealElements) {
+      const windowHeight = window.innerHeight;
+      const revealTop = el.getBoundingClientRect().top;
+      const revealPoint = 100;
+      if (revealTop < windowHeight - revealPoint) {
+        el.classList.add('active');
+      }
+    }
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+
+  // contact form alert
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      if (!name) return alert('Masukkan nama dulu yaa.');
+      alert(`Terima kasih ${name}, pesan Anda sudah terkirim! ARDIANSYAH akan membalas ke email anda dalam 1x24 jam.`);
+      contactForm.reset();
+    });
+  }
+
+  // smooth scrolling for nav links
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // tombol hero lihat karya & hubungi
+  const btnKarya = document.querySelector('.btn-primary');
+  const btnHubungi = document.querySelector('.btn-outline');
+  if(btnKarya && btnKarya.getAttribute('href') === '#portfolio') {
+    btnKarya.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+  if(btnHubungi && btnHubungi.getAttribute('href') === '#contact') {
+    btnHubungi.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>
